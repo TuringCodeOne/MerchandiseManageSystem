@@ -58,10 +58,10 @@ MERCHANDISEMANAGESYSTEM
 
 ## 程序工作流程
 
-1. 入口是`main.cpp`，读入`info_merchandise.txt`里已存在的商品数据，构建链表。
+1. 入口是`main.cpp`，读入`info_merchandise.txt`里已存在的商品数据，构建链表。密码`rootroot`
 2. 在控制台上显示出功能选项，供用户选择。
 3. 运行，进行商品管理。
-4. 离开时通过`exitSystem()`函数突出程序，并再次之前，将链表的数据再次重新写入`.txt`文件。
+4. 离开时通过`exitSystem()`函数退出程序，并在此之前，将链表的数据重新写入`.txt`文件。
 
 
 
