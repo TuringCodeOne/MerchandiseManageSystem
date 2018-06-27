@@ -5,7 +5,7 @@
 #include<iomanip>
 
 
-//æ≤Ã¨≥…‘±≥ı ºªØ
+//ÈùôÊÄÅÊàêÂëòÂàùÂßãÂåñ
 int Merchandise::MERSTOCKS[] = { 0,0,0,0 };
 
 Merchandise::Merchandise() {
@@ -28,7 +28,7 @@ void Merchandise::initGood(chartMerchan &ListOfGoods) {
 	cout << endl;
 	printLongDash();
 	printShortDash();
-	cout << "\t\t\t*…Ã∆∑–≈œ¢¬º»Î*\t\t\t";
+	cout << "\t\t\t*ÂïÜÂìÅ‰ø°ÊÅØÂΩïÂÖ•*\t\t\t";
 	printShortDash();
 	cout << endl;
 	printLongDash();
@@ -37,14 +37,14 @@ void Merchandise::initGood(chartMerchan &ListOfGoods) {
 	
 
 	do{
-		cout << "\n\n¿‡–Õ£∫[1] ≥∆∑\t[2]ªØ◊±∆∑\t[3]»’”√∆∑\t[4]“˚¡œ\n";
+		cout << "\n\nÁ±ªÂûãÔºö[1]È£üÂìÅ\t[2]ÂåñÂ¶ÜÂìÅ\t[3]Êó•Áî®ÂìÅ\t[4]È•ÆÊñô\n";
 		printLongDash();
-		cout << "\n«Î—°‘Ò£∫";
+		cout << "\nËØ∑ÈÄâÊã©Ôºö";
 		cin >>merClass;
 		if(cin.fail()) {
 			printShortDash();
 			SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_RED);
-			cout << "Œﬁ–ß◊÷∑˚¥Æ£¨«Î÷ÿ ‘£°£°£°";
+			cout << "Êó†ÊïàÂ≠óÁ¨¶‰∏≤ÔºåËØ∑ÈáçËØïÔºÅÔºÅÔºÅ";
 			printShortDash();
 			cin.clear();
 			cin.ignore(1024, '\n');
@@ -52,12 +52,12 @@ void Merchandise::initGood(chartMerchan &ListOfGoods) {
 		else {
 			if (merClass == 1 || merClass == 2 || merClass == 3 || merClass == 4) {
 				i = false;
-				MERSTOCKS[merClass - 1]++;//∂‘”¶…Ã∆∑ø‚¥Ê+1
+				MERSTOCKS[merClass - 1]++;//ÂØπÂ∫îÂïÜÂìÅÂ∫ìÂ≠ò+1
 			}
 			else {
 				printShortDash();
 				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_RED);
-				cout << "—°œÓ≤ª¥Ê‘⁄£°£°£°Œﬁ¥À¿‡…Ã∆∑!«Î÷ÿ ‘";
+				cout << "ÈÄâÈ°π‰∏çÂ≠òÂú®ÔºÅÔºÅÔºÅÊó†Ê≠§Á±ªÂïÜÂìÅ!ËØ∑ÈáçËØï";
 				printShortDash();
 			}
 		}
@@ -66,7 +66,7 @@ void Merchandise::initGood(chartMerchan &ListOfGoods) {
 	i = true;
 
 	do {
-		cout << "\n«Î ‰»Î…Ã∆∑√˚≥∆£∫";
+		cout << "\nËØ∑ËæìÂÖ•ÂïÜÂìÅÂêçÁß∞Ôºö";
 		cin >> merName;
 		if (merName.size() > 0 && merName.size() < 20) {
 			i = false;
@@ -74,7 +74,7 @@ void Merchandise::initGood(chartMerchan &ListOfGoods) {
 		else {
 			printShortDash();
 			SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_RED);
-			cout << "…Ã∆∑√˚π˝≥§≤ª∫œ∑®£°£°£°«Î÷ÿ ‘";
+			cout << "ÂïÜÂìÅÂêçËøáÈïø‰∏çÂêàÊ≥ïÔºÅÔºÅÔºÅËØ∑ÈáçËØï";
 			printShortDash();
 		}
 	} while (i);
@@ -82,19 +82,19 @@ void Merchandise::initGood(chartMerchan &ListOfGoods) {
 	i = true;
 
 	do {
-		cout << "\n«Î ‰»Î…Ã∆∑±‡∫≈£∫";
+		cout << "\nËØ∑ËæìÂÖ•ÂïÜÂìÅÁºñÂè∑Ôºö";
 		cin >> merId;
 		if (ListOfGoods.checkDataId(merId)) {
 			cin.sync();
 			printShortDash();
 			SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_RED);
-			cout << " ˝æ›ø‚÷–“—æ≠¥Ê‘⁄¥À±‡∫≈£¨«Î÷ÿ–¬ ‰»Î…Ã∆∑±‡∫≈£°";
+			cout << "Êï∞ÊçÆÂ∫ì‰∏≠Â∑≤ÁªèÂ≠òÂú®Ê≠§ÁºñÂè∑ÔºåËØ∑ÈáçÊñ∞ËæìÂÖ•ÂïÜÂìÅÁºñÂè∑ÔºÅ";
 			printShortDash();
 		}
 		else if(merId.size() != 6) {
 				printShortDash();
 				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_RED);
-				cout << "◊¢“‚£°£°£°…Ã∆∑±‡∫≈–Ë6Œª";
+				cout << "Ê≥®ÊÑèÔºÅÔºÅÔºÅÂïÜÂìÅÁºñÂè∑ÈúÄ6‰Ωç";
 				printShortDash();
 		}else i = false;
 	} while (i);
@@ -102,12 +102,12 @@ void Merchandise::initGood(chartMerchan &ListOfGoods) {
 	i = true;
 
 	do {
-		cout << "\n«Î ‰»Î…Ã∆∑º€∏Ò£∫";
+		cout << "\nËØ∑ËæìÂÖ•ÂïÜÂìÅ‰ª∑Ê†ºÔºö";
 		cin >> merPrice;
 		if (cin.fail()) {
 			printShortDash();
 			SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_RED);
-			cout << "ƒ˙ ‰»Îµƒ≤ª « ˝◊÷£°£°£°«Î÷ÿ–¬ ‰»Î";
+			cout << "ÊÇ®ËæìÂÖ•ÁöÑ‰∏çÊòØÊï∞Â≠óÔºÅÔºÅÔºÅËØ∑ÈáçÊñ∞ËæìÂÖ•";
 			printShortDash();
 			cin.clear();
 			cin.ignore(1024, '\n');
@@ -115,7 +115,7 @@ void Merchandise::initGood(chartMerchan &ListOfGoods) {
 		else if (merPrice < 0 || merPrice>100000) {
 			printShortDash();
 			SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_RED);
-			cout << "ƒ˙ ‰»Îµƒº€«Æ≤ª∑˚∫œ≥£¿Ì£°£°£°«Î÷ÿ ‘";
+			cout << "ÊÇ®ËæìÂÖ•ÁöÑ‰ª∑Èí±‰∏çÁ¨¶ÂêàÂ∏∏ÁêÜÔºÅÔºÅÔºÅËØ∑ÈáçËØï";
 			printShortDash();
 		}
 		else i = false;
@@ -126,7 +126,7 @@ void Merchandise::initGood(chartMerchan &ListOfGoods) {
 	i = true;
 
 	do {
-		cout << "\n«Î ‰»Î…˙≤˙≥ßº“£∫";
+		cout << "\nËØ∑ËæìÂÖ•Áîü‰∫ßÂéÇÂÆ∂Ôºö";
 		cin >> merMfr;
 		if (merMfr.size() > 0 && merMfr.size() < 100) {
 			i = false;
@@ -134,7 +134,7 @@ void Merchandise::initGood(chartMerchan &ListOfGoods) {
 		else {
 			printShortDash();
 			SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_RED);
-			cout << "ƒ«∏ˆ…˙≤˙≥ßº“√˚◊÷ª·’‚√¥≥§£°£°£°«Î÷ÿ–¬ ‰»Î";
+			cout << "ÈÇ£‰∏™Áîü‰∫ßÂéÇÂÆ∂ÂêçÂ≠ó‰ºöËøô‰πàÈïøÔºÅÔºÅÔºÅËØ∑ÈáçÊñ∞ËæìÂÖ•";
 			printShortDash();
 		}
 	} while (i);
@@ -142,7 +142,7 @@ void Merchandise::initGood(chartMerchan &ListOfGoods) {
 	i = true;
 
 	do {
-		cout << "\n«Î ‰»Î…Ã∆∑∆∑≈∆£∫";
+		cout << "\nËØ∑ËæìÂÖ•ÂïÜÂìÅÂìÅÁâåÔºö";
 		cin >> merBrand;
 		if (merBrand.size() > 0 && merBrand.size() < 20) {
 			i = false;
@@ -150,7 +150,7 @@ void Merchandise::initGood(chartMerchan &ListOfGoods) {
 		else {
 			printShortDash();
 			SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_RED);
-			cout << "”–’‚√¥≥§µƒ∆∑≈∆¬£ø£ø£ø«Î÷ÿ–¬ ‰»Î";
+			cout << "ÊúâËøô‰πàÈïøÁöÑÂìÅÁâåÂêóÔºüÔºüÔºüËØ∑ÈáçÊñ∞ËæìÂÖ•";
 			printShortDash();
 		}
 	} while (i);
@@ -160,13 +160,13 @@ void Merchandise::initGood(chartMerchan &ListOfGoods) {
 }
 
 void Merchandise::display() {
-	cout << "\n\t\t*…Ã∆∑√˚:" << merName
-		<< "\n\t\t*…Ã∆∑¿‡±:" << MERCLASS[merClass - 1]
-		<< "\n\t\t*…Ã∆∑±‡∫≈:" << merId
-		<< "\n\t\t*…Ã∆∑º€∏Ò:" << merPrice
-		<< "\n\t\t*…˙≤˙≥ßº“:" << merMfr
-		<< "\n\t\t*…Ã∆∑∆∑≈∆:" << merBrand;
-	cout << "\n\t\t*◊¥Ã¨:";
+	cout << "\n\t\t*ÂïÜÂìÅÂêç:" << merName
+		<< "\n\t\t*ÂïÜÂìÅÁ±ªÂà´:" << MERCLASS[merClass - 1]
+		<< "\n\t\t*ÂïÜÂìÅÁºñÂè∑:" << merId
+		<< "\n\t\t*ÂïÜÂìÅ‰ª∑Ê†º:" << merPrice
+		<< "\n\t\t*Áîü‰∫ßÂéÇÂÆ∂:" << merMfr
+		<< "\n\t\t*ÂïÜÂìÅÂìÅÁâå:" << merBrand;
+	cout << "\n\t\t*Áä∂ÊÄÅ:";
 	if(merStatus==1){
 	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_GREEN);
 	cout<< STATUS[merStatus];
@@ -176,7 +176,7 @@ void Merchandise::display() {
 		cout << STATUS[merStatus];
 	}
 	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_GREEN | FOREGROUND_RED | FOREGROUND_BLUE);
-	cout<< "\n\t\t*ø‚¥Ê:"<<MERSTOCKS[merClass-1];
+	cout<< "\n\t\t*Â∫ìÂ≠ò:"<<MERSTOCKS[merClass-1];
 }
 
 void Merchandise::displayLine() {
@@ -251,16 +251,16 @@ void Merchandise::modifyData() {
 	cout << endl;
 	printLongDash();
 	cout << endl;
-	cout << "œÎ–ﬁ∏ƒ–≈œ¢£øƒ«æÕ«Î ‰»Î…Ã∆∑±‡∫≈∞…£∫";
+	cout << "ÊÉ≥‰øÆÊîπ‰ø°ÊÅØÔºüÈÇ£Â∞±ËØ∑ËæìÂÖ•ÂïÜÂìÅÁºñÂè∑ÂêßÔºö";
 	cin >> id;
 	while (id.size() != 6) {
 		cout << endl;
 		printShortDash();
 		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_RED);
-		cout << "◊¢“‚£°£°£°…Ã∆∑±‡∫≈–Ë6Œª";
+		cout << "Ê≥®ÊÑèÔºÅÔºÅÔºÅÂïÜÂìÅÁºñÂè∑ÈúÄ6‰Ωç";
 		printShortDash();
 		cout << endl;
-		cout << "«Î‘Ÿ¥Œ ‰»Î…Ã∆∑∫≈£∫";
+		cout << "ËØ∑ÂÜçÊ¨°ËæìÂÖ•ÂïÜÂìÅÂè∑Ôºö";
 		cin.clear();
 		cin.ignore(1024, '\n');
 		cin >> id;
@@ -273,7 +273,7 @@ void Merchandise::modifyData() {
 		cout << endl;
 		printShortDash();
 		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_RED);
-		cout << "…æ≥˝≥…π¶£°£°£°";
+		cout << "Âà†Èô§ÊàêÂäüÔºÅÔºÅÔºÅ";
 		printShortDash();
 		cout << endl;
 	}
@@ -281,7 +281,7 @@ void Merchandise::modifyData() {
 		cout << endl;
 		printShortDash();
 		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_RED);
-		cout << " ˝æ›ø‚Œﬁ”Î¥À…Ã∆∑œ‡πÿ–≈œ¢";
+		cout << "Êï∞ÊçÆÂ∫ìÊó†‰∏éÊ≠§ÂïÜÂìÅÁõ∏ÂÖ≥‰ø°ÊÅØ";
 		printShortDash();
 		cout << "\n\n";
 
@@ -347,14 +347,14 @@ istream &operator >> (istream &in, Merchandise &merchandise) {
 }
 
 /**
-string merName;     //…Ã∆∑√˚
-string merId;       //±‡∫≈
-double merPrice;    //º€∏Ò
-unsigned short int merStatus;     // «∑Ò‘⁄ €
-string merMfr;      //…˙≤˙≥ßº“
-string merBrand;    //∆∑≈∆
-unsigned short int merClass;       //…Ã∆∑¿‡–Õ
-static int MERSTOCKS[4];//∑÷±¥˙±Ì4÷÷…Ã∆∑∏˜◊‘ø‚¥Ê
+string merName;     //ÂïÜÂìÅÂêç
+string merId;       //ÁºñÂè∑
+double merPrice;    //‰ª∑Ê†º
+unsigned short int merStatus;     //ÊòØÂê¶Âú®ÂîÆ
+string merMfr;      //Áîü‰∫ßÂéÇÂÆ∂
+string merBrand;    //ÂìÅÁâå
+unsigned short int merClass;       //ÂïÜÂìÅÁ±ªÂûã
+static int MERSTOCKS[4];//ÂàÜÂà´‰ª£Ë°®4ÁßçÂïÜÂìÅÂêÑËá™Â∫ìÂ≠ò
 */
 
 
@@ -367,7 +367,7 @@ static int MERSTOCKS[4];//∑÷±¥˙±Ì4÷÷…Ã∆∑∏˜◊‘ø‚¥Ê
 
 
 
-//±Ì
+//Ë°®
 chartMerchan::chartMerchan() {
 	header = new Merchandise;
 	move= header;
@@ -399,9 +399,18 @@ Merchandise *chartMerchan::getHeader() {
 
 
 Merchandise* chartMerchan::modifyStatus(string id) {
+// 	Merchandise *p = front->next;
+// 	while (p) {
+		
+// 		if (p->getMerId() == id)
+// 			return p;
+// 		front = front->next;
+// 		p = front->next;
+// 	};
+// 	return NULL;
+	front = header;
 	Merchandise *p = front->next;
 	while (p) {
-		
 		if (p->getMerId() == id)
 			return p;
 		front = front->next;
@@ -444,7 +453,7 @@ int chartMerchan::selectByClass(int merclass, bool isnt) {
 		cout << endl;
 		printShortDash();
 		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_RED);
-		cout << "ø‚¥Ê÷–√ª”–¥À¿‡…Ã∆∑£°£°£°";
+		cout << "Â∫ìÂ≠ò‰∏≠Ê≤°ÊúâÊ≠§Á±ªÂïÜÂìÅÔºÅÔºÅÔºÅ";
 		printShortDash();
 		cout << "\n\n";
 	}
@@ -471,7 +480,7 @@ void chartMerchan::selectByMfr(string mermfr) {
 		cout << endl;
 		printShortDash();
 		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_RED);
-		cout << "ø‚¥Ê÷–√ª”–¥À…˙≤˙≥ßº“µƒ…Ã∆∑£°£°£°";
+		cout << "Â∫ìÂ≠ò‰∏≠Ê≤°ÊúâÊ≠§Áîü‰∫ßÂéÇÂÆ∂ÁöÑÂïÜÂìÅÔºÅÔºÅÔºÅ";
 		printShortDash();
 		cout << "\n\n";
 	}
@@ -498,7 +507,7 @@ void chartMerchan::selectByName(string mername) {
 		cout << endl;
 		printShortDash();
 		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_RED);
-		cout << "ø‚¥Ê÷–√ª”–¥À√˚≥∆µƒ…Ã∆∑£°£°£°";
+		cout << "Â∫ìÂ≠ò‰∏≠Ê≤°ÊúâÊ≠§ÂêçÁß∞ÁöÑÂïÜÂìÅÔºÅÔºÅÔºÅ";
 		printShortDash();
 		cout << "\n\n";
 	}
