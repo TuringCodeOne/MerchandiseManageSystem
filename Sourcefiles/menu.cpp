@@ -46,6 +46,13 @@ void printDividerStar() {
 	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),  FOREGROUND_GREEN);
 	cout << "*************************************************************"<<endl;
 }
+
+void printDividerStarPurple() {
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_BLUE| FOREGROUND_RED);
+	cout << "**************************************************************************************";
+	cout << endl;
+	cout << endl;
+}
 void printShortStar() {
 	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_GREEN | FOREGROUND_RED);
 	cout << "*****";
@@ -317,9 +324,9 @@ void selectFunction() {
 	else {
 		char i_chooseId = chooseId[0];
 		switch (i_chooseId) {
-		case '1':SelectByName(ListOfGoods);; break;
-		case '2':SelectByMfr(ListOfGoods);; break;
-		case '3':SelectByClass(ListOfGoods);; break;
+		case '1':SelectByName(ListOfGoods); break;
+		case '2':SelectByMfr(ListOfGoods); break;
+		case '3':SelectByClass(ListOfGoods); break;
 		case '0':returnChildLast(); break;
 		default:
 			cout << endl;
@@ -413,7 +420,14 @@ void modifyFunction(chartMerchan &ListOfGoods) {
 
 
 
-
+void printHeaderLine() {
+	cout << "*商品编号*"
+		<< "\t*商品名*"
+		<< "\t*价格*"
+		<< "\t\t*生产厂商*"
+		<< "\t*品牌*\t" 
+		<<"\t*状态*"<< "\n\n";
+}
 
 
 

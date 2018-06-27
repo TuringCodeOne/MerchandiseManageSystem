@@ -2,12 +2,25 @@
 
 #include"goodsClass.h"
 #include"main.h"
+#include<iomanip>
 
 
 //静态成员初始化
 int Merchandise::MERSTOCKS[] = { 0,0,0,0 };
 
+Merchandise::Merchandise() {
+	merName = "";
+	merId = "";
+	merPrice = 0;
+	merMfr = "";
+	merBrand = "";
+	merStatus = 0;
+	merClass = 0;
+	next = NULL;
+	MERSTOCKS[merClass - 1]++;
 
+
+}
 
 void Merchandise::initGood(chartMerchan &ListOfGoods) {
 
@@ -166,6 +179,25 @@ void Merchandise::display() {
 	cout<< "\n\t\t*库存:"<<MERSTOCKS[merClass-1];
 }
 
+void Merchandise::displayLine() {
+	cout << setw(8)<< merId
+		<< setw(14)<<merName
+		<< setw(13) << merPrice
+		<< setw(21) << merMfr
+		<< setw(13) << merBrand;
+	cout << setw(16) ;
+	if (merStatus == 1) {
+		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_GREEN);
+		cout << STATUS[merStatus];
+	}
+	else {
+		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_RED);
+		cout << STATUS[merStatus];
+	}
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_GREEN | FOREGROUND_RED | FOREGROUND_BLUE);
+	cout << endl;
+}
+
 
 
 
@@ -175,7 +207,7 @@ string Merchandise::getMerId() {
 }
 
 string Merchandise::getMerClass() {
-	return MERCLASS[merClass - 1];
+	return MERCLASS[merClass-1];
 }
 
 unsigned short int Merchandise::getClass() {
@@ -188,6 +220,20 @@ string Merchandise::getMerMfr() {
 
 string Merchandise::getMerName() {
 	return merName;
+}
+unsigned short int Merchandise::getMerStatus() {
+	return merStatus;
+}
+
+
+double Merchandise::getMerPrice() {
+	return merPrice;
+}
+string Merchandise::getMerBrand() {
+	return merBrand;
+}
+int Merchandise::gerMerRespo() {
+	return merClass;
 }
 
 
@@ -261,6 +307,10 @@ void Merchandise::modifyBrand(string backup) {
 	merBrand = backup;
 }
 
+void Merchandise::ModifyMERSTOCKS() {
+	MERSTOCKS[merClass - 1]++;
+}
+
 void Merchandise::ModifyMERSTOCKS(bool element,unsigned short int merclass) {
 	if (element) {
 		MERSTOCKS[merclass - 1]--;
@@ -269,6 +319,43 @@ void Merchandise::ModifyMERSTOCKS(bool element,unsigned short int merclass) {
 		MERSTOCKS[merclass - 1]++;
 	}
 }
+
+
+ostream &operator << (ostream &out, Merchandise &merchandise) {
+	out << "  " << merchandise.getMerId()
+		<< "  " << merchandise.getMerName()
+		<< "  " << merchandise.getClass()
+		<< "  " << merchandise.getMerBrand()
+		<< "  " << merchandise.getMerPrice()
+		<< "  " << merchandise.getMerStatus()
+		<< "  " << merchandise.getMerMfr()
+		//<< "  " << merchandise.gerMerRespo()
+		<< endl;
+	return out;
+}
+
+istream &operator >> (istream &in, Merchandise &merchandise) {
+	in >> merchandise.merId
+		>> merchandise.merName
+		>> merchandise.merClass
+		>> merchandise.merBrand
+		>> merchandise.merPrice
+		>> merchandise.merStatus
+		>> merchandise.merMfr;
+		//>> merchandise.MERSTOCKS[merClass - 1];
+	return in;
+}
+
+/**
+string merName;     //商品名
+string merId;       //编号
+double merPrice;    //价格
+unsigned short int merStatus;     //是否在售
+string merMfr;      //生产厂家
+string merBrand;    //品牌
+unsigned short int merClass;       //商品类型
+static int MERSTOCKS[4];//分别代表4种商品各自库存
+*/
 
 
 
@@ -285,7 +372,6 @@ chartMerchan::chartMerchan() {
 	header = new Merchandise;
 	move= header;
 	front = header;
-	move->next = NULL;
 }
 
 void chartMerchan::insertData(Merchandise *ptr) {
@@ -298,22 +384,16 @@ int chartMerchan::selectData() {
 	Merchandise *p=header->next;
 	int sum=0;
 	cout << "\n\t";
-	printLongerDash();
-	cout << "查询结果";
-	printLongerDash();
-	cout <<"\n\n";
-	while (p) {
-		cout << endl;
-		printBlank();
-		printLongerDash();
-		p->display();
+
+	while (p) {	
 		p = p->next;
 		sum++;
-		cout << "\n\t\t";
-		printLongerDash();
-		cout << endl;
 	}
 	return sum;
+}
+
+Merchandise *chartMerchan::getHeader() {
+	return header;
 }
 
 
@@ -342,8 +422,9 @@ bool chartMerchan::checkDataId(string id) {
 	return false;
 }
 
-void chartMerchan::selectByClass(int merclass) {
-	bool comby=true;
+int chartMerchan::selectByClass(int merclass, bool isnt) {
+	bool comby=isnt;
+	int sum = 0;
 	Merchandise *p = header->next;
 	while (p) {
 		if (p->getMerClass() == MERCLASS[merclass-1]) {
@@ -355,6 +436,7 @@ void chartMerchan::selectByClass(int merclass) {
 			cout << "\n\t\t";
 			printLongerDash();
 			cout << endl;
+			sum++;
 		}
 		p = p->next;
 	};
@@ -366,6 +448,7 @@ void chartMerchan::selectByClass(int merclass) {
 		printShortDash();
 		cout << "\n\n";
 	}
+	return sum;
 }
 
 void chartMerchan::selectByMfr(string mermfr) {
@@ -396,6 +479,7 @@ void chartMerchan::selectByMfr(string mermfr) {
 
 void chartMerchan::selectByName(string mername) {
 	bool comby = true;
+
 	Merchandise *p = header->next;
 	while (p) {
 		if (p->getMerName() == mername) {
@@ -419,4 +503,71 @@ void chartMerchan::selectByName(string mername) {
 		cout << "\n\n";
 	}
 }
+
+Merchandise* chartMerchan::makeListByClass(int merclass) {
+	
+	Merchandise *head = new Merchandise;
+	Merchandise *pCompare;
+	pCompare = head;
+	Merchandise *insert;
+	Merchandise *MOVE;
+	MOVE = header;
+
+	if (header->next == NULL) {
+		return NULL;
+	}
+
+
+	*head = *header;
+	head->next = NULL;
+	MOVE = MOVE->next;
+	insert = new Merchandise;
+	*insert = *MOVE;
+	insert->next = NULL;
+	pCompare->next = insert;
+	MOVE = MOVE->next;
+	while (MOVE) {	
+			pCompare = head;
+			if (MOVE->getMerId().compare(pCompare->next->getMerId()) < 0) {
+				insert = new Merchandise;
+				*insert = *MOVE;
+				insert->next = pCompare->next;
+				pCompare->next = insert;
+				MOVE = MOVE->next;
+			}
+			else {
+				while (MOVE->getMerId().compare(pCompare->next->getMerId()) > 0) {
+
+					pCompare = pCompare->next;
+					if (pCompare->next == NULL) {
+						break;
+					}
+				};
+
+				if (pCompare->next == NULL) {
+					insert = new Merchandise;
+					*insert = *MOVE;
+					pCompare->next = insert;
+					insert->next = NULL;
+					pCompare = head;
+					MOVE = MOVE->next;
+					
+				}
+				else {
+					insert = new Merchandise;
+					*insert = *MOVE;
+					insert->next = pCompare->next;
+					pCompare->next = insert;
+					pCompare = head;
+					MOVE = MOVE->next;	
+				}
+			}
+	};
+	return head;
+}
+
+
+//ostream &operator << (ostream &out, chartMerchan &chartmerchan) {
+//	
+//}
 

@@ -25,6 +25,7 @@ using namespace std;
 **/
 
 void printDividerStar();
+void printDividerStarPurple();
 void printShortStar();
 void printShortWhiteStar();
 void printLongStar();
@@ -44,6 +45,8 @@ void switchFunction();
 void manageFunction();
 void selectFunction();
 void systemStart();
+
+void printHeaderLine();
 
 
 

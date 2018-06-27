@@ -35,9 +35,15 @@ protected:
 public:
 	Merchandise *next;
 
+
+	Merchandise();
 	bool getStatus() { return merStatus; }
+	
+	
 	void initGood(chartMerchan &ListOfGoods);
 	void display();
+	void displayLine();
+
 	void modifyData();
 	void modifyIn();
 	void modifyOut();
@@ -47,6 +53,11 @@ public:
 	unsigned short int getClass();
 	string getMerMfr();
 	string getMerName();
+	unsigned short int getMerStatus();
+	double getMerPrice();
+	string getMerBrand();
+	int gerMerRespo();
+
 
 	void modifyClass(unsigned short int backup);    //改类型
 	void modifyMfr(string backup);					//改生产厂家
@@ -55,8 +66,12 @@ public:
 	void modifyPrice(double backup);				//改商品价格
 	void modifyBrand(string backup);				//改商品品牌
 
+	void ModifyMERSTOCKS();
 	void ModifyMERSTOCKS(bool element,unsigned short int merclass);		//修改库存
 
+
+	friend ostream &operator << (ostream &out,  Merchandise &merchandise);
+	friend istream &operator >>(istream &in, Merchandise &merchandise);
 };
 
 
@@ -73,19 +88,28 @@ private:
 	
 public:
 	Merchandise *front;
-
 	chartMerchan();
+	Merchandise *getHeader();
+
+
 	void insertData(Merchandise *newData);
 	int selectData();
+
 	Merchandise* modifyStatus(string id);
 
 
 
 	bool checkDataId(string id);
+
+
 	void selectByName(string merName);
-	void selectByClass(int merclass);
+	int selectByClass(int merclass, bool isnt);
 	void selectByMfr(string mermfr);
+
+	Merchandise *makeListByClass(int merclass);
 	
+
+	//friend ostream &operator << (ostream &out, chartMerchan &charmerchan);
 
 };
 //全局声明ListOfGoods

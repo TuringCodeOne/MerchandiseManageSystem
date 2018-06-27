@@ -2,6 +2,7 @@
 
 #include"main.h"
 #include"Fuction.h"
+#include"fileOperate.h"
 
 #include<iostream>
 //主界面
@@ -104,6 +105,7 @@ void retrunSale(chartMerchan &ListOfGoods) {
 	}
 }
 
+/**
 void analyseData(chartMerchan &ListOfGoods) {
 	
 	int sum= ListOfGoods.selectData();
@@ -113,13 +115,132 @@ void analyseData(chartMerchan &ListOfGoods) {
 	printLongerDash();
 	cout << "\n\n";
 	
+	const string MERCLASS[4] = { "食品","化妆品","日用品","饮料" };
+}
+*/
+
+void analyseData(chartMerchan &ListOfGoods) {
+		
+	int sum = ListOfGoods.selectData();
+
+	cout << "\n";
+	printLongDash();
+	printShortDash();
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_BLUE);
+	cout << "\t\t\t商品总数：" <<sum<< "\t\t\t";
+	printShortDash();
+	cout << endl;
+	printLongDash();
+	cout << "\n\n";
+
+	//printLongerDash();
+	//printLongerDash();
+	//SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_BLUE | FOREGROUND_RED);
+	//cout << "食品类" << "\t\t\t";
+	//printLongerDash();
+	//printLongerDash();
+	//printShortDash();
+	//cout << "\n\n";
+
+	printHeaderLine();
+
+//ListOfGoods.makeListByClass(1);
+	
+	//if (p1!= NULL) {
+	//	if (p1->next != NULL) {
+	//		p1 = p1->next;
+	//		while (p1) {
+
+	//			p1->displayLine();
+	//			p1 = p1->next;
+	//		};
+	//	}
+	//}
+
+		
+	
+
+
+	//printLongerDash();
+	//printLongerDash();
+	//SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_BLUE | FOREGROUND_RED);
+	//cout << "化妆品" ;
+	//printLongerDash();
+	//printLongerDash();
+	//printShortDash();
+	//cout << "\n\n";
+
+	//printHeaderLine();
+
+ Merchandise *p2=ListOfGoods.makeListByClass(2);
+	if (p2 != NULL) {
+		if (p2->next!=NULL) {
+			p2 = p2->next;
+			while (p2) {
+
+				p2->displayLine();
+				p2 = p2->next;
+			};
+		}
+	}
+
+	cout << endl;
+	printDividerStarPurple();
+
+
+	//printLongerDash();
+	//printLongerDash();
+	//SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_BLUE | FOREGROUND_RED);
+	//cout << "日用品类" ;
+	//printLongerDash();
+	//printLongerDash();
+	//printShortDash();
+	//cout << "\n\n";
+
+	//printHeaderLine();
+
+	//ListOfGoods.makeListByClass(3);
+	/*if (p3 != NULL) {
+		if (p3->next!=NULL) {
+			p3 = p3->next;
+			while (p3) {
+
+				p3->displayLine();
+				p3 = p3->next;
+			};
+		}
+	}
+*/
+//
+//	printLongerDash();
+//	printLongerDash();
+//	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_BLUE | FOREGROUND_RED);
+//	cout << "饮料类" ;
+//	printLongerDash();
+//	printLongerDash();
+//		printShortDash();
+//	cout << "\n\n";
+//
+//	printHeaderLine();
+//
+//ListOfGoods.makeListByClass(4);
+	//if (p4->next!=NULL ) {
+	//	p4 = p4->next;
+	//	while (p4) {
+	//		
+	//		p4->displayLine();
+	//		p4 = p4->next;
+	//	};
+	//}
+	//Merchandise *p8 = ListOfGoods.makeListByClass(4);
+	//delete p8;
 
 }
 
 void exitSystem() {
 	cout << endl;
 	cout << endl;
-
+	writeFile();
 	printShortStar();
 	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_RED);
 	cout << "您已成功退出系统，欢迎下次使用！";
@@ -183,6 +304,7 @@ void selectDelete() {
 			cout << "删除成功！！！";
 			printShortDash();
 			cout << endl;
+			manageFunction();
 		}
 		else {
 			cout << endl;
@@ -534,7 +656,7 @@ void SelectByClass(chartMerchan &ListOfGoods) {
 			cin.clear();
 			cin.ignore(1024, '\n');
 		}else if(kindOf == 1 || kindOf == 2 || kindOf == 3 || kindOf == 4) {
-			ListOfGoods.selectByClass(kindOf);
+			ListOfGoods.selectByClass(kindOf,true);
 			break;
 		}
 
